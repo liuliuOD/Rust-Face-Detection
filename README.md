@@ -14,12 +14,12 @@ This project demonstrates face detection using `Rust` and `OpenCV`. It includes 
 
 ## Environment
 
-- **Operating System:** MacOS
+- **Operating System:** MacOS M2
     - **Dependencies:**
         - OpenCV: ^4.0
 - **Programming Language:** Rust
     - **Dependencies:**
-        - OpenCV: ^0.85.0
+        - OpenCV: ^0.91.0
 
 ## Execution
 
@@ -37,6 +37,15 @@ This project demonstrates face detection using `Rust` and `OpenCV`. It includes 
   # hint: you need to bind the devices into your own docker container
   $ docker run -idtv $PWD:/app --device="{replace to the path of your device}:/dev/video0" rust-face-detection
   ```
+
+## Q & A
+
+### Q: `dyld: Library not loaded: @rpath/libclang.dylib`
+
+[Answer:](https://crates.io/crates/opencv/0.75.0)
+```shell
+$ export DYLD_FALLBACK_LIBRARY_PATH="$(xcode-select --print-path)/usr/lib/"
+```
 
 ## References
 
