@@ -10,7 +10,7 @@ use opencv::{
     videoio,
 };
 
-const ASCII_Q: i32 = 113;
+const ASCII_Q: i32 = 'q' as i32;
 
 fn main() -> Result<()> {
     let path_absolute: String = match current_dir() {
@@ -27,9 +27,9 @@ fn main() -> Result<()> {
     let mut camera = videoio::VideoCapture::from_file(&format!("{path_absolute}/resources/demo.mp4"), videoio::CAP_FFMPEG)?;
     */
 
-    let mut image_camera = Mat::default();
     let xml = format!("{path_absolute}/haarcascades/frontalface_default.xml");
     let mut face_detector = objdetect::CascadeClassifier::new(&xml)?;
+    let mut image_camera = Mat::default();
     loop {
         camera.read(&mut image_camera)?;
 
@@ -67,6 +67,5 @@ fn main() -> Result<()> {
         }
     }
 
-    // unreachable!()
     return Ok(())
 }
